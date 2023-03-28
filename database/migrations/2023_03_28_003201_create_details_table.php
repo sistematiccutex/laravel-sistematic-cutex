@@ -17,14 +17,13 @@ return new class extends Migration
             $table->integer('stock');
             $table->integer('subtotal');
             $table->enum('status', ["active", "inactive"])->default("active");
-             //Declaración llave foranea
+            //Declaración llave foranea
             $table->bigInteger('invoice_id')->unsigned();
             $table->bigInteger('product_id')->unsigned();
-             //Union llave foranea
+            //Union llave foranea
             $table->foreign('invoice_id')->references('id')->on('invoices');
             $table->foreign('product_id')->references('id')->on('products');
             $table->softDeletes();
-            $table->timestamps();
             $table->timestamps();
         });
     }
