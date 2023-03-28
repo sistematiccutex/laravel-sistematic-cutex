@@ -13,14 +13,14 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $products = [
+        $products_tale = [
             [
                 'name' => ' Correa doble faz',
                 'reference' => '001',
                 'description' => 'Correea doble faz',
                 'stock' => '10',
                 'price' => '25000',
-                'measure' => '',
+                'measure' => '2',
                 'company_id' => '1',
                 'provider_id' => '1',
                 'color_id' => '1',
@@ -34,7 +34,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Billetera con cierre',
                 'stock' => '12',
                 'price' => '35000',
-                'measure' => '',
+                'measure' => '2',
                 'company_id' => '1',
                 'provider_id' => '2',
                 'color_id' => '2',
@@ -47,7 +47,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Correa lisa',
                 'stock' => '12',
                 'price' => '35000',
-                'measure' => '',
+                'measure' => '2',
                 'company_id' => '1',
                 'provider_id' => '2',
                 'color_id' => '3',
@@ -60,7 +60,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Billetera broche',
                 'stock' => '11',
                 'price' => '34000',
-                'measure' => '',
+                'measure' => '2',
                 'company_id' => '1',
                 'provider_id' => '2',
                 'color_id' => '4',
@@ -69,19 +69,19 @@ class ProductsTableSeeder extends Seeder
 
             ]
         ];
-        foreach ($products as $product) {
+        foreach ($products_tale as $product_tale) {
             Product::create([
-                'name' => $product['name'],
-                'reference' => $product['reference'],
-                'description' => $product['description'],
-                'stock' => $product['stock'],
-                'price' => $product['price'],
-                'measure' => $product['measure'],
-                'company_id' => $product['company_id'],
-                'provider_id' => $product['provider_id'],
-                'color_id' => $product['color_id'],
-                'subcategory_id' => $product['subcategory_id'],
-                'user_id' => $product['user_id'],
+                'name' => $product_tale['name'],
+                'reference' => $product_tale['reference'],
+                'description' => $product_tale['description'],
+                'stock' => $product_tale['stock'],
+                'price' => $product_tale['price'],
+                'measure' => $product_tale['measure'],
+                'company_id' => $product_tale['company_id'],
+                'provider_id' => $product_tale['provider_id'],
+                'color_id' => $product_tale['color_id'],
+                'subcategory_id' => $product_tale['subcategory_id'],
+                'user_id' => $product_tale['user_id'],
 
             ]);
         }
