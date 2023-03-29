@@ -59,12 +59,23 @@
             <!--Titulo descripcion -->
             <li class="menu-title">Navegación</li>
             <li class="menu-item">
-                <a href="{{ route("proveedores") }}" class="menu-link">
+                <a href="{{ route('proveedores') }}" class="menu-link">
                     <span class="menu-icon"><i class="fa-solid fa-users"></i></span>
                     <span class="menu-text"> Proveedores </span>
                 </a>
             </li>
-
+            <li class="menu-item">
+                <a href="{{ route('productos') }}" class="menu-link">
+                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
+                    <span class="menu-text"> Productos</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('usuarios') }}" class="menu-link">
+                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
+                    <span class="menu-text">Usuarios </span>
+                </a>
+            </li>
             <li class="menu-item">
                 <a href="{{ route("colores") }}" class="menu-link">
                     <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
