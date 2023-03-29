@@ -22,7 +22,7 @@ return new class extends Migration
             $table->bigInteger('product_id')->unsigned();
              //Union llave foranea
             $table->foreign('invoice_id')->references('id')->on('invoices');
-            $table->foreign('product_id')->references('id')->on('products_tale');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->softDeletes();
             $table->timestamps();
         });

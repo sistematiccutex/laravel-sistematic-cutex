@@ -13,7 +13,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $products_tale = [
+        $products = [
             [
                 'name' => ' Correa doble faz',
                 'reference' => '001',
@@ -69,19 +69,19 @@ class ProductsTableSeeder extends Seeder
 
             ]
         ];
-        foreach ($products_tale as $product_tale) {
+        foreach ($products as $product) {
             Product::create([
-                'name' => $product_tale['name'],
-                'reference' => $product_tale['reference'],
-                'description' => $product_tale['description'],
-                'stock' => $product_tale['stock'],
-                'price' => $product_tale['price'],
-                'measure' => $product_tale['measure'],
-                'company_id' => $product_tale['company_id'],
-                'provider_id' => $product_tale['provider_id'],
-                'color_id' => $product_tale['color_id'],
-                'subcategory_id' => $product_tale['subcategory_id'],
-                'user_id' => $product_tale['user_id'],
+                'name' => $product['name'],
+                'reference' => $product['reference'],
+                'description' => $product['description'],
+                'stock' => $product['stock'],
+                'price' => $product['price'],
+                'measure' => $product['measure'],
+                'company_id' => $product['company_id'],
+                'provider_id' => $product['provider_id'],
+                'color_id' => $product['color_id'],
+                'subcategory_id' => $product['subcategory_id'],
+                'user_id' => $product['user_id'],
 
             ]);
         }
