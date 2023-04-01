@@ -161,7 +161,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="company" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" name="stock" required>
+                        <input type="text" class="form-control" name="description" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="company" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" name="stock" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Precio</label>
@@ -170,6 +174,51 @@
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Medida</label>
                         <input type="number" class="form-control" name="measure"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Compañia</label>
+                        <select name="company_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Proveedor</label>
+                        <select name="provider_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($providers as $provider)
+                                <option value="{{ $provider->id }}">{{ $provider->business_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Color</label>
+                        <select name="color_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($colors as $color)
+                                <option value="{{ $color->id }}">{{ $color->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Subcategoria</label>
+                        <select name="subcategory_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($subcategories as $subcategory)
+                                <option value="{{ $subcategory->id }}">{{ $subcategory->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Usuario</label>
+                        <select name="user_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->names}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-success waves-effect waves-light">Guardar</button>

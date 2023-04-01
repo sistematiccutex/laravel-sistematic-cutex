@@ -77,6 +77,12 @@
                 </a>
             </li>
             <li class="menu-item">
+                <a href="{{ route('facturas') }}" class="menu-link">
+                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
+                    <span class="menu-text">Facturas </span>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="{{ route("colores") }}" class="menu-link">
                     <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
                     <span class="menu-text"> .... </span>

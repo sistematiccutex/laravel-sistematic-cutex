@@ -59,7 +59,7 @@
                                                     type="submit">
                                                     @if ($provider->status === 'active')
                                                         <span class="badge text-bg-success">Activo</span>
-                                                    @else
+                                                     @else
                                                         <span class="badge text-bg-danger">Inactivo</span>
                                                     @endif
                                                 </button>

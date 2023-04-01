@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Document;
+use App\Models\Rol;
+use App\Models\Company;
 
 class UsersController extends Controller
 {
@@ -12,9 +15,12 @@ class UsersController extends Controller
     {
         //ORM Eloquent
         $users = User::all();
+        $documents = Document::all();
+        $roles = Rol::all();
+        $companies = Company::all();
         //select * from providers
         //me retorna la información en formato json
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users', 'documents', 'roles', 'companies'));
     }
     //crear
     // public function create()
@@ -40,7 +46,8 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show', compact('user'));
+        $documents = Document::all();
+        return view('users.show', compact('user', 'documents'));
     }
     //editar
     public function edit($id)

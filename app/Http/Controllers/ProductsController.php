@@ -4,17 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Company;
+use App\Models\Provider;
+use App\Models\Color;
+use App\Models\Subcategory;
+use App\Models\User;
 
 class ProductsController extends Controller
 {
     ///listar Proveedor
     public function index()
     {
+        
         //ORM Eloquent
         $products = Product::all();
+        $companies = Company::all();
+        $providers = Provider::all();
+        $colors = Color::all();
+        $subcategories = Subcategory::all();
+        $users = User::all();
         //select * from providers
         //me retorna la información en formato json
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products','companies', 'providers','colors', 'subcategories', 'users'));
     }
     //crear
     // public function create()
