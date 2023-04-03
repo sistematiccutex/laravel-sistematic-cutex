@@ -6,6 +6,7 @@ use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Auth\LoginRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,3 +108,15 @@ Route::get('colores/{id}/editar', [ColorsController::class, 'edit'])->name('colo
 Route::put('colores/{id}', [ColorsController::class, 'update'])->name('colores.actualizar');
 //Actualizar status Color
 Route::put('colores-status/{id}', [ColorsController::class, 'editStatus'])->name('colores.estado');
+
+
+//loguin and register
+
+Route::controller(LoginRegisterController::class)->group(function () {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::post('/logout', 'logout')->name('logout');
+});
