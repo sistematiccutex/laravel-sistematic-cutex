@@ -14,7 +14,7 @@
                         <div class="page-title-box">
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <h4>Lista de Proveedores</h4>
+                                    <h4>Lista de Usuarios</h4>
                                 </ol>
                             </div>
                         </div>
@@ -22,44 +22,46 @@
                     <!--Botón Crear-->
                     <div class="text-sm-end">
                         <button type="button" class="btn btn-danger waves-effect waves-light mt-3 mb-2" data-bs-toggle="modal"
-                            data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Proveedor</button>
+                            data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Usuario</button>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <div class="col-sm-12">
-                        <table id="proveedores"class="table table-striped table-bordered mb-5" style="width:100%">
+                        <table id="usuarios"class="table table-striped table-bordered mb-5" style="width:100%">
 
                             <!--Inicio de Tabla crear-->
                             <thead>
                                 <tr>
 
                                     <th></th>
-                                    <th>Nombre Comercial</th>
-                                    <th>Dirección</th>
-                                    <th>Telefono</th>
+                                    <th>Nombre </th>
+                                    <th>Apellido</th>
+                                    <th>Numero Documento</th>
+                                    <th>Numero Celular</th>
                                     <th>Estado</th>
                                     <th style="width: 82px;">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($providers as $provider)
+                                @foreach ($users as $user)
                                     <tr>
-                                        <td> {{ $provider->id }}</td>
+                                        <td> {{ $user->id }}</td>
                                         <td class="table-user">
-                                            <a href="{{ route('proveedores.detalles', $provider->id) }}"
-                                                class="text-body fw-semibold">{{ $provider->business_name }}</a>
+                                            <a href="{{ route('usuarios.detalles', $user->id) }}"
+                                                class="text-body fw-semibold">{{ $user->names }}</a>
                                         </td>
-                                        <td>{{ $provider->address }}</td>
-                                        <td>{{ $provider->cellphone }}</td>
+                                        <td>{{ $user->surnames }}</td>
+                                        <td>{{ $user->document_number }}</td>
+                                        <td>{{ $user->cellphone }}</td>
                                         <td>
-                                            <form action="{{ route('proveedores.estado', $provider->id) }}" method="POST">
+                                            <form action="{{ route('usuarios.estado', $user->id) }}" method="POST">
                                                 @method('PUT')
                                                 @csrf
                                                 <button style="border: none !important; background: transparent"
                                                     type="submit">
-                                                    @if ($provider->status === 'active')
+                                                    @if ($user->status === 'active')
                                                         <span class="badge text-bg-success">Activo</span>
-                                                     @else
+                                                    @else
                                                         <span class="badge text-bg-danger">Inactivo</span>
                                                     @endif
                                                 </button>
@@ -67,17 +69,17 @@
                                             </form>
                                         </td>
                                         <td class="d-flex">
-                                            <form id="formDeleted{{ $provider->id }}"
-                                                action="{{ route('proveedores.eliminar', $provider->id) }}" method="POST">
+                                            <form id="formDeleted{{ $user->id }}"
+                                                action="{{ route('usuarios.eliminar', $user->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
 
 
                                             </form>
                                             <a class="me-2 btn btn-sm btn-info"
-                                                href="{{ route('proveedores.editar', $provider->id) }}" class="action-icon">
+                                                href="{{ route('usuarios.editar', $user->id) }}" class="action-icon">
                                                 Editar</a>
-                                            <button class="btn btn-danger btn-sm" onclick="deleted({{ $provider->id }})">
+                                            <button class="btn btn-danger btn-sm" onclick="deleted({{ $user->id }})">
                                                 Eliminar
                                             </button>
                                         </td>
@@ -117,7 +119,7 @@
                                         form.submit();
                                         Swal.fire(
                                             '¡Eliminado!',
-                                            'Su proveedor ha sido eliminado.',
+                                            'Su usuario ha sido eliminado.',
                                             'success'
                                         )
                                     }
@@ -152,32 +154,74 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title" id="myCenterModalLabel">Crear Proveedor</h4>
+                <h4 class="modal-title" id="myCenterModalLabel">Crear Usuario</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-4">
-                <form action="{{ route('proveedores.guardar') }}" method="POST">
+                <form action="{{ route('usuarios.guardar') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nombre Comercial</label>
-                        <input type="text" class="form-control" name="business_name" required>
+                        <label for="name" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" name="names" required>
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nombre del Administrador</label>
-                        <input type="text" class="form-control" name="admin_name" required>
+                        <label for="name" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" name="surnames" required>
                     </div>
                     <div class="mb-3">
-                        <label for="company" class="form-label">Telefono</label>
-                        <input type="text" class="form-control" name="cellphone" required>
+                        <label for="company" class="form-label">Numero Documento</label>
+                        <input type="number" class="form-control" name="document_number" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Correo eléctronico</label>
-                        <input type="email" class="form-control" name="email" placeholder="ejemplo@gmail.com" required>
+                        <label for="exampleInputEmail1" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" name="address"  required>
                     </div>
                     <div class="mb-3">
-                        <label for="position" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" name="address" required>
+                        <label for="position" class="form-label">Numero Celular</label>
+                        <input type="number" class="form-control" name="cellphone" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label">Genero</label>
+                        <input type="text" class="form-control" name="gender" required>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Tipo Docuemnto</label>
+                        <select name="document_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($documents as $document)
+                                <option value="{{ $document->id }}">{{ $document->acronym}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Rol</label>
+                        <select name="rol_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($roles as $rol)
+                                <option value="{{ $rol->id }}">{{ $rol->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Compañia</label>
+                        <select name="company_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Contraseña<a href=""></a></label>
+                        <input type="text" class="form-control" name="password" required>
+                    </div>
+                    
 
                     <div class="text-end">
                         <button type="submit" class="btn btn-success waves-effect waves-light">Guardar</button>

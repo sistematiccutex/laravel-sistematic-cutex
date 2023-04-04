@@ -14,7 +14,7 @@
                         <div class="page-title-box">
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <h4>Lista de Proveedores</h4>
+                                    <h4>Lista de Productos</h4>
                                 </ol>
                             </div>
                         </div>
@@ -22,62 +22,55 @@
                     <!--Botón Crear-->
                     <div class="text-sm-end">
                         <button type="button" class="btn btn-danger waves-effect waves-light mt-3 mb-2" data-bs-toggle="modal"
-                            data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Proveedor</button>
+                            data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Producto</button>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <div class="col-sm-12">
-                        <table id="proveedores"class="table table-striped table-bordered mb-5" style="width:100%">
+                        <table id="productos"class="table table-striped table-bordered mb-5" style="width:100%">
 
                             <!--Inicio de Tabla crear-->
                             <thead>
                                 <tr>
 
                                     <th></th>
-                                    <th>Nombre Comercial</th>
-                                    <th>Dirección</th>
-                                    <th>Telefono</th>
+                                    <th>Nombre Producto</th>
+                                    <th>Referencia</th>
+                                    <th>Precio</th>
                                     <th>Estado</th>
                                     <th style="width: 82px;">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($providers as $provider)
+                                @foreach ($products as $product)
                                     <tr>
-                                        <td> {{ $provider->id }}</td>
+                                        <td> {{ $product->id }}</td>
                                         <td class="table-user">
-                                            <a href="{{ route('proveedores.detalles', $provider->id) }}"
-                                                class="text-body fw-semibold">{{ $provider->business_name }}</a>
+                                            <a href="{{ route('productos.detalles', $product->id) }}"
+                                                class="text-body fw-semibold">{{ $product->name }}</a>
                                         </td>
-                                        <td>{{ $provider->address }}</td>
-                                        <td>{{ $provider->cellphone }}</td>
-                                        <td>
-                                            <form action="{{ route('proveedores.estado', $provider->id) }}" method="POST">
-                                                @method('PUT')
+                                        <td>{{ $product->reference }}</td>
+                                        <td>{{ $product->price }}</td>                                     
+                                        <td class="d-flex">
+                                            <form id="formDeleted{{ $product->id }}"
+                                                action="{{ route('productos.eliminar', $product->id) }}" method="POST">
+                                                @method('DELETE')
                                                 @csrf
                                                 <button style="border: none !important; background: transparent"
                                                     type="submit">
-                                                    @if ($provider->status === 'active')
+                                                    @if ($product->status === 'active')
                                                         <span class="badge text-bg-success">Activo</span>
-                                                     @else
+                                                    @else
                                                         <span class="badge text-bg-danger">Inactivo</span>
                                                     @endif
                                                 </button>
-
-                                            </form>
                                         </td>
-                                        <td class="d-flex">
-                                            <form id="formDeleted{{ $provider->id }}"
-                                                action="{{ route('proveedores.eliminar', $provider->id) }}" method="POST">
-                                                @method('DELETE')
-                                                @csrf
-
-
+                                        <td>   
                                             </form>
                                             <a class="me-2 btn btn-sm btn-info"
-                                                href="{{ route('proveedores.editar', $provider->id) }}" class="action-icon">
+                                                href="{{ route('productos.editar', $product->id) }}" class="action-icon">
                                                 Editar</a>
-                                            <button class="btn btn-danger btn-sm" onclick="deleted({{ $provider->id }})">
+                                            <button class="btn btn-danger btn-sm" onclick="deleted({{ $product->id }})">
                                                 Eliminar
                                             </button>
                                         </td>
@@ -91,7 +84,7 @@
                         <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
                         <script>
                             $(document).ready(function() {
-                                $('#proveedores').DataTable({
+                                $('#productos').DataTable({
                                     "language": {
                                         "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                                     },
@@ -117,7 +110,7 @@
                                         form.submit();
                                         Swal.fire(
                                             '¡Eliminado!',
-                                            'Su proveedor ha sido eliminado.',
+                                            'Su producto ha sido eliminado.',
                                             'success'
                                         )
                                     }
@@ -152,33 +145,81 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title" id="myCenterModalLabel">Crear Proveedor</h4>
+                <h4 class="modal-title" id="myCenterModalLabel">Crear Producto</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-4">
-                <form action="{{ route('proveedores.guardar') }}" method="POST">
+                <form action="{{ route('productos.guardar') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nombre Comercial</label>
-                        <input type="text" class="form-control" name="business_name" required>
+                        <label for="name" class="form-label">Nombre Producto</label>
+                        <input type="text" class="form-control" name="name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nombre del Administrador</label>
-                        <input type="text" class="form-control" name="admin_name" required>
+                        <label for="name" class="form-label">Referencia</label>
+                        <input type="text" class="form-control" name="reference" required>
                     </div>
                     <div class="mb-3">
-                        <label for="company" class="form-label">Telefono</label>
-                        <input type="text" class="form-control" name="cellphone" required>
+                        <label for="company" class="form-label">Descripcion</label>
+                        <input type="text" class="form-control" name="description" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Correo eléctronico</label>
-                        <input type="email" class="form-control" name="email" placeholder="ejemplo@gmail.com" required>
+                        <label for="company" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" name="stock" required>
                     </div>
                     <div class="mb-3">
-                        <label for="position" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" name="address" required>
+                        <label for="exampleInputEmail1" class="form-label">Precio</label>
+                        <input type="number" class="form-control" name="price"  required>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Medida</label>
+                        <input type="number" class="form-control" name="measure"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Compañia</label>
+                        <select name="company_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Proveedor</label>
+                        <select name="provider_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($providers as $provider)
+                                <option value="{{ $provider->id }}">{{ $provider->business_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Color</label>
+                        <select name="color_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($colors as $color)
+                                <option value="{{ $color->id }}">{{ $color->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Subcategoria</label>
+                        <select name="subcategory_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($subcategories as $subcategory)
+                                <option value="{{ $subcategory->id }}">{{ $subcategory->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Usuario</label>
+                        <select name="user_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->names}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-success waves-effect waves-light">Guardar</button>
                         <button type="button" class="btn btn-danger waves-effect waves-light" data-bs-dismiss="modal"

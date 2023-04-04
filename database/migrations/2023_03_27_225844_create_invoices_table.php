@@ -19,9 +19,6 @@ return new class extends Migration
             //Declaración de llaves foraneas
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('client_id')->unsigned();
-            //Unión llave foranea
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('client_id')->references('id')->on('clients');
             $table->softDeletes();
             $table->timestamps();
         });

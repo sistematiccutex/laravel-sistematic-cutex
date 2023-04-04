@@ -26,12 +26,6 @@ return new class extends Migration
             $table->bigInteger('color_id')->unsigned();
             $table->bigInteger('subcategory_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            //Union llave foranea
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('provider_id')->references('id')->on('providers');
-            $table->foreign('color_id')->references('id')->on('colors');
-            $table->foreign('subcategory_id')->references('id')->on('subcategories');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });

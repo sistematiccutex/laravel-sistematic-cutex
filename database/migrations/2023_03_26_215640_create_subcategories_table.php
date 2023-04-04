@@ -17,8 +17,6 @@ return new class extends Migration
             $table->enum('status', ["active", "inactive"])->default("active");
             //Declaración llave foranea
             $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
-            //Union llave foranea
             $table->softDeletes();
             $table->timestamps();
         });

@@ -22,8 +22,6 @@ return new class extends Migration
             $table->enum('status', ["active", "inactive"])->default("active");
             //Declaración llave foranea
             $table->bigInteger('document_id')->unsigned();
-            //Union llave foranea
-            $table->foreign('document_id')->references('id')->on('documents');
             $table->softDeletes();
             $table->timestamps();
         });
