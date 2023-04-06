@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -108,7 +109,7 @@ class UsersTableSeeder extends Seeder
                 'document_id' => $user['document_id'],
                 'rol_id' => $user['rol_id'],
                 'company_id' => $user['company_id'],
-                'password' => $user['password'],
+                'password' => Hash::make($user['password']),
 
             ]);
         }

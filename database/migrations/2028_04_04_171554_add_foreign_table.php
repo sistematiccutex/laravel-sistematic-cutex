@@ -23,7 +23,11 @@ return new class extends Migration
         });
         /*
          *
-         * Tabla Subcategoria
+         * Tabla Su
+         * 
+         
+         
+         bcategoria
          */
 
         Schema::table('subcategories', function (Blueprint $table) {

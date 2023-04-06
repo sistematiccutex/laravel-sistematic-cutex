@@ -19,6 +19,10 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 //Proveedores
 //listar Proveedor
 Route::get('proveedores', [ProvidersController::class, 'index'])->name('proveedores');
