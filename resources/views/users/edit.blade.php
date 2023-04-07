@@ -63,7 +63,7 @@
                                                     <button type="submit" class="btn btn-success waves-effect waves-light">
                                                         <span class="btn-label"><i class="mdi mdi-check-all"></i></span>Actualizar
                                                     </button>
-                                                    <a  href= "{{ route('proveedores') }}" class="btn btn-danger waves-effect waves-light">
+                                                    <a  href= "{{ route('usuarios') }}" class="btn btn-danger waves-effect waves-light">
                                                         <span class="btn-label"><i class="mdi mdi-close-circle-outline"></i></span>Cancelar
                                                     </a>
                                                 </div>

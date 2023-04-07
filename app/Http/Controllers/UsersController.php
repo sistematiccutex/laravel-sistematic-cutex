@@ -31,7 +31,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         // Guarda un mensaje de éxito en la sesión
-        session()->flash('success', 'Producto creado correctamente');
+        session()->flash('success', 'Usuario creado correctamente');
 
         User::create($request->all());
         return redirect()->route('usuarios')->with('message', session('success'));
@@ -67,13 +67,13 @@ class UsersController extends Controller
             User::find($id)->update(["status" => "active"]);
         }
 
-        return redirect()->route('usuarios');    
+        return redirect()->route('usuarios');
     }
     //actualizar
     public function update(Request $request, $id)
     {
         // Guarda un mensaje de éxito en la sesión
-        session()->flash('success', 'Usuarios actualizado correctamente');
+        session()->flash('success', 'Usuario actualizado correctamente');
 
         $user = User::find($id)->update($request->all());
         return redirect()->route('usuarios')->with('message', session('success'));;

@@ -1,18 +1,12 @@
 <div class="app-menu">
 
     <!-- Brand Logo -->
-    <div class="logo-box">
-        <!-- Brand Logo Light -->
-        <a href="index.html" class="logo-light">
-            <img src="" alt="logo" class="logo-lg">
-            <img src="" alt="small logo" class="logo-sm">
-        </a>
-
-        <!-- Brand Logo Dark -->
+    <div class="d-flex flex-column align-items-center justify-content-center py-2">
         <a href="index.html" class="logo-dark">
-            <img src="{{ url('images/logo-google.png')}}" alt="dark logo sdfsdfsdfdsdfsdfsdfdsfsdf" class="logo-lg">
-            <img src="" alt="small logo" class="logo-sm">
+            <img src="{{ url('images/logo.jpg')}}" alt="dark logo sdfsdfsdfdsdfsdfsdfdsfsdf" width="100" height="100">
         </a>
+        <p> {{ Auth::user()->names }}</p>
+        <span> {{ Auth::user()->names }}</span>
     </div>
 
     <!-- menu-left -->
@@ -66,26 +60,26 @@
             </li>
             <li class="menu-item">
                 <a href="{{ route('productos') }}" class="menu-link">
-                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
+                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-bag-shopping"></i></span>
                     <span class="menu-text"> Productos</span>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{ route('usuarios') }}" class="menu-link">
-                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-user"></i></span>
                     <span class="menu-text">Usuarios </span>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{ route('facturas') }}" class="menu-link">
-                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-file-invoice"></i></span>
                     <span class="menu-text">Facturas </span>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{ route("colores") }}" class="menu-link">
-                    <span class="menu-icon"><i class="fa-sharp fa-solid fa-palette"></i></span>
-                    <span class="menu-text"> .... </span>
+                    <span class="menu-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="menu-text"> Reportes </span>
                 </a>
             </li>
 
