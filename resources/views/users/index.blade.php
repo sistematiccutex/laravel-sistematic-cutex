@@ -19,11 +19,14 @@
                             </div>
                         </div>
                     </div>
-                    <!--Botón Crear-->
-                    <div class="text-sm-end">
-                        <button type="button" class="btn btn-danger waves-effect waves-light mt-3 mb-2" data-bs-toggle="modal"
-                            data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Usuario</button>
-                    </div>
+                    @if (Auth::user()->rol_id==1)
+ <!--Botón Crear-->
+ <div class="text-sm-end">
+    <button type="button" class="btn btn-danger waves-effect waves-light mt-3 mb-2" data-bs-toggle="modal"
+        data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Usuario</button>
+</div>
+                    @endif
+                   
                 </div>
                 <div class="table-responsive">
                     <div class="col-sm-12">
@@ -39,7 +42,9 @@
                                     <th>Numero Documento</th>
                                     <th>Numero Celular</th>
                                     <th>Estado</th>
+                                    @if (Auth::user()->rol_id==1)
                                     <th style="width: 82px;">Acciones</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,6 +73,7 @@
 
                                             </form>
                                         </td>
+                                        @if (Auth::user()->rol_id==1)
                                         <td class="d-flex">
                                             <form id="formDeleted{{ $user->id }}"
                                                 action="{{ route('usuarios.eliminar', $user->id) }}" method="POST">
@@ -83,6 +89,7 @@
                                                 Eliminar
                                             </button>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -93,7 +100,7 @@
                         <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
                         <script>
                             $(document).ready(function() {
-                                $('#proveedores').DataTable({
+                                $('#usuarios').DataTable({
                                     "language": {
                                         "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                                     },

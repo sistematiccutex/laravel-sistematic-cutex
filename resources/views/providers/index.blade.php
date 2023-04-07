@@ -20,10 +20,13 @@
                         </div>
                     </div>
                     <!--Botón Crear-->
+                    @if ( Auth::user()->rol_id ==1)
                     <div class="text-sm-end">
                         <button type="button" class="btn btn-danger waves-effect waves-light mt-3 mb-2" data-bs-toggle="modal"
                             data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Proveedor</button>
                     </div>
+                    @endif
+                  
                 </div>
                 <div class="table-responsive">
                     <div class="col-sm-12">
@@ -38,7 +41,10 @@
                                     <th>Dirección</th>
                                     <th>Telefono</th>
                                     <th>Estado</th>
+                                    @if (Auth::user()->rol_id==1)
                                     <th style="width: 82px;">Acciones</th>
+                                    @endif
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,6 +72,7 @@
 
                                             </form>
                                         </td>
+                                        @if (Auth::user()->rol_id==1)
                                         <td class="d-flex">
                                             <form id="formDeleted{{ $provider->id }}"
                                                 action="{{ route('proveedores.eliminar', $provider->id) }}" method="POST">
@@ -77,10 +84,14 @@
                                             <a class="me-2 btn btn-sm btn-info"
                                                 href="{{ route('proveedores.editar', $provider->id) }}" class="action-icon">
                                                 Editar</a>
-                                            <button class="btn btn-danger btn-sm" onclick="deleted({{ $provider->id }})">
-                                                Eliminar
-                                            </button>
+                                               
+                                                <button class="btn btn-danger btn-sm" onclick="deleted({{ $provider->id }})">
+                                                    Eliminar
+                                                </button>  
+                                               
+                                           
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

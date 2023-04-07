@@ -1,128 +1,11 @@
 <div class="navbar-custom">
     <div class="topbar">
         <div class="topbar-menu d-flex align-items-center gap-1">
-
-            <!-- Topbar Brand Logo -->
-            <div class="logo-box">
-                <!-- Brand Logo Light -->
-                <a href="index.html" class="logo-light">
-                    <img src="assets/images/logo-light.png" alt="logo" class="logo-lg">
-                    <img src="assets/images/logo-sm.png" alt="small logo" class="logo-sm">
-                </a>
-
-                <!-- Brand Logo Dark -->
-                <a href="index.html" class="logo-dark">
-                    <img src="assets/images/logo-dark.png" alt="dark logo" class="logo-lg">
-                    <img src="assets/images/logo-sm.png" alt="small logo" class="logo-sm">
-                </a>
-            </div>
-
-            <!-- Sidebar Menu Toggle Button -->
-            <button class="button-toggle-menu">
-                <i class="mdi mdi-menu"></i>
-            </button>
-
-            <!-- Dropdown Menu -->
-            <div class="dropdown d-none d-xl-block">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    ejemplo desplegable
-                    <i class="mdi mdi-chevron-down ms-1"></i>
-                </a>
-                <div class="dropdown-menu">
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="fe-briefcase me-1"></i>
-                        <span>option 1</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="fe-user me-1"></i>
-                        <span>option 2</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="fe-headphones me-1"></i>
-                        <span>option 3</span>
-                    </a>
-
-                </div>
-            </div>
-
-            <!-- Mega Menu Dropdown -->
             
         </div>
 
         <ul class="topbar-menu d-flex align-items-center">
-            <!-- Topbar Search Form -->
-            <li class="app-search dropdown me-3 d-none d-lg-block">
-                <form>
-                    <input type="search" class="form-control rounded-pill" placeholder="Search..." id="top-search">
-                    <span class="fe-search search-icon font-22"></span>
-                </form>
-                <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                    <!-- item-->
-                    <div class="dropdown-header noti-title">
-                        <h5 class="text-overflow mb-2">Found 22 results</h5>
-                    </div>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-home me-1"></i>
-                        <span>Analytics Report</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-aperture me-1"></i>
-                        <span>How can I help you?</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings me-1"></i>
-                        <span>User profile settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                    </div>
-
-                    <div class="notification-list">
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="d-flex align-items-start">
-                                <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg" alt="Generic placeholder image" height="32">
-                                <div class="w-100">
-                                    <h5 class="m-0 font-14">Erwin E. Brown</h5>
-                                    <span class="font-12 mb-0">UI Designer</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="d-flex align-items-start">
-                                <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-5.jpg" alt="Generic placeholder image" height="32">
-                                <div class="w-100">
-                                    <h5 class="m-0 font-14">Jacob Deo</h5>
-                                    <span class="font-12 mb-0">Developer</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Fullscreen Button -->
-            <li class="d-none d-md-inline-block">
-                <a class="nav-link waves-effect waves-light" href="" data-toggle="fullscreen">
-                    <i class="fe-maximize font-22"></i>
-                </a>
-            </li>
 
             <!-- Search Dropdown (for Mobile/Tablet) -->
             <li class="dropdown d-lg-none">
@@ -273,40 +156,29 @@
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="https://manager.almadarisp.com/user/img/user.png" alt="user-image" class="rounded-circle">
                     <span class="ms-1 d-none d-md-inline-block">
-                        Test Usuario <i class="mdi mdi-chevron-down"></i>
+                        {{ Auth::user()->names }} <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
-                    <!-- item-->
-                    <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
-                    </div>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
-                        <span>My Account</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings"></i>
-                        <span>Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock"></i>
-                        <span>Lock Screen</span>
+                        <span>Perfil</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-log-out"></i>
-                        <span>Logout</span>
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}" >
+                        @csrf
+
+                        <button type="submit" class="dropdown-item notify-item">
+                            <i class="fe-log-out"></i>
+                            <span>Cerrar sesión</span>
+                        </button>
+                    </form>
+                  
 
                 </div>
             </li>

@@ -12,7 +12,7 @@ class InvoicesController extends Controller
     ///listar Proveedor
     public function index()
     {
-        
+
         //ORM Eloquent
         $invoices = Invoice::all();
         $users = User::all();
@@ -30,7 +30,7 @@ class InvoicesController extends Controller
     public function store(Request $request)
     {
         // Guarda un mensaje de éxito en la sesión
-        session()->flash('success', 'Producto creado correctamente');
+        session()->flash('success', 'Factura creado correctamente');
 
         Invoice::create($request->all());
         return redirect()->route('facturas')->with('message', session('success'));
@@ -65,13 +65,13 @@ class InvoicesController extends Controller
             Invoice::find($id)->update(["status" => "active"]);
         }
 
-        return redirect()->route('facturas');    
+        return redirect()->route('facturas');
     }
     //actualizar
     public function update(Request $request, $id)
     {
         // Guarda un mensaje de éxito en la sesión
-        session()->flash('success', 'Productos actualizado correctamente');
+        session()->flash('success', 'Factura actualizado correctamente');
 
         $invoices = Invoice::find($id)->update($request->all());
         return redirect()->route('facturas')->with('message', session('success'));;
