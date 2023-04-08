@@ -16,21 +16,21 @@ class InvoicesTableSeeder extends Seeder
         $invoices = [
             [
                 'date_hour' => now(),
-                'total' => '325000',
+                'total' => '125000',
                 'user_id' => '1',
                 'client_id' => '1'
 
             ],
             [
                 'date_hour' => now(),
-                'total' => '600000',
+                'total' => '130000',
                 'user_id' => '2',
                 'client_id' => '2'
 
             ],
             [
                 'date_hour' => now(),
-                'total' => '85000',
+                'total' => '70000',
                 'user_id' => '3',
                 'client_id' => '3'
 

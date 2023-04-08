@@ -15,6 +15,7 @@ class ProductsTableSeeder extends Seeder
     {
         $products = [
             [
+                'photo' => 'https://castafina.com.co/wp-content/uploads/2020/10/DF-009-00.jpg',
                 'name' => ' Correa doble faz',
                 'reference' => '001',
                 'description' => 'Correea doble faz',
@@ -29,6 +30,7 @@ class ProductsTableSeeder extends Seeder
             ],
 
             [
+                'photo' => 'https://castafina.com.co/wp-content/uploads/2020/10/DF-009-00.jpg',
                 'name' => 'Billetera con cierre',
                 'reference' => '002',
                 'description' => 'Billetera con cierre',
@@ -42,6 +44,7 @@ class ProductsTableSeeder extends Seeder
                 'user_id' => '2'
             ],
             [
+                'photo' => 'https://castafina.com.co/wp-content/uploads/2020/10/DF-009-00.jpg',
                 'name' => 'Correa lisa',
                 'reference' => '003',
                 'description' => 'Correa lisa',
@@ -55,6 +58,7 @@ class ProductsTableSeeder extends Seeder
                 'user_id' => '3'
             ],
             [
+                'photo' => 'https://castafina.com.co/wp-content/uploads/2020/10/DF-009-00.jpg',
                 'name' => 'Billetera broche',
                 'reference' => '004',
                 'description' => 'Billetera broche',
@@ -71,6 +75,7 @@ class ProductsTableSeeder extends Seeder
         ];
         foreach ($products as $product) {
             Product::create([
+                'photo' => $product['photo'],
                 'name' => $product['name'],
                 'reference' => $product['reference'],
                 'description' => $product['description'],

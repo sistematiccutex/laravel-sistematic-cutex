@@ -58,7 +58,7 @@
                                         <td>{{ $user->surnames }}</td>
                                         <td>{{ $user->document_number }}</td>
                                         <td>{{ $user->cellphone }}</td>
-                                        <td>
+                                        <td>{{  }}
                                             <form action="{{ route('usuarios.estado', $user->id) }}" method="POST">
                                                 @method('PUT')
                                                 @csrf
@@ -101,6 +101,13 @@
                         <script>
                             $(document).ready(function() {
                                 $('#usuarios').DataTable({
+
+
+
+
+
+
+
                                     "language": {
                                         "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                                     },

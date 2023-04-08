@@ -9,15 +9,21 @@ use App\Models\Provider;
 use App\Models\Color;
 use App\Models\Subcategory;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
     ///listar Proveedor
     public function index()
     {
-        
+
         //ORM Eloquent
-        $products = Product::all();
+        $products = Product::query()
+            ->leftJoin('details', 'details.product_id', '=', 'products.id')
+            ->select('products.id', 'products.photo', 'products.name', 'products.stock', 'products.reference', 'products.price', 'products.status', DB::raw('SUM(IF(details.stock,details.stock,0)) as stockDetail'))
+            ->groupBy('products.id', 'products.photo', 'products.name', 'products.stock', 'products.reference', 'products.price', 'products.status', 'details.product_id')->get();
         $companies = Company::all();
         $providers = Provider::all();
         $colors = Color::all();
@@ -25,7 +31,7 @@ class ProductsController extends Controller
         $users = User::all();
         //select * from providers
         //me retorna la información en formato json
-        return view('products.index', compact('products','companies', 'providers','colors', 'subcategories', 'users'));
+        return view('products.index', compact('products', 'companies', 'providers', 'colors', 'subcategories', 'users'));
     }
     //crear
     // public function create()
@@ -35,6 +41,15 @@ class ProductsController extends Controller
     //(guardar datos y retornar proveedores)
     public function store(Request $request)
     {
+
+        $image = $request->file('file');
+
+        $fileName = time() . "_" . $image->getClientOriginalName();
+
+        $image->move(public_path('images'), $fileName);
+
+        $request['photo'] = "images/" . $fileName;
+        $request['user_id'] = Auth::user()->id;
         // Guarda un mensaje de éxito en la sesión
         session()->flash('success', 'Producto creado correctamente');
 
@@ -71,7 +86,7 @@ class ProductsController extends Controller
             Product::find($id)->update(["status" => "active"]);
         }
 
-        return redirect()->route('productos');    
+        return redirect()->route('productos');
     }
     //actualizar
     public function update(Request $request, $id)
