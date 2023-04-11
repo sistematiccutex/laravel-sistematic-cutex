@@ -58,7 +58,7 @@
                                         <td>{{ $user->surnames }}</td>
                                         <td>{{ $user->document_number }}</td>
                                         <td>{{ $user->cellphone }}</td>
-                                        <td>{{  }}
+                                        <td>
                                             <form action="{{ route('usuarios.estado', $user->id) }}" method="POST">
                                                 @method('PUT')
                                                 @csrf
