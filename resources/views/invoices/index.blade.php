@@ -21,8 +21,8 @@
                     </div>
                     <!--Botón Crear-->
                     <div class="text-sm-end">
-                        <button type="button" class="btn btn-danger waves-effect waves-light mt-3 mb-2" data-bs-toggle="modal"
-                            data-bs-target="#custom-modal"><i class="mdi mdi-plus-circle me-1"></i> Crear Factura</button>
+                        <a href="{{ route('facturas.crear') }}" class="btn btn-danger waves-effect waves-light mt-3 mb-2"
+                            ><i class="mdi mdi-plus-circle me-1"></i> Crear Factura</a>
                     </div>
                 </div>
                 <div class="table-responsive">

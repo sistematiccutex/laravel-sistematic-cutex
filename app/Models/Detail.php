@@ -12,7 +12,7 @@ class Detail extends Model
     use SoftDeletes;
     protected $table = 'details';
     protected $primaryKey = 'id';
-    protected $fillible = [
+    protected $fillable = [
         'price',
         'stock',
         'subtotal',
