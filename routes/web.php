@@ -6,6 +6,7 @@ use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use Illuminate\Support\Facades\Auth;
 
@@ -125,4 +126,8 @@ Route::middleware([
     Route::put('colores/{id}', [ColorsController::class, 'update'])->name('colores.actualizar');
     //Actualizar status Color
     Route::put('colores-status/{id}', [ColorsController::class, 'editStatus'])->name('colores.estado');
+
+    //Reportes 
+    Route::get('reportes', [ReportsController::class, 'index'])->name('reportes');
+    Route::get('obtenerReportes', [ReportsController::class, 'getReports'])->name('obtenerReportes');
 });

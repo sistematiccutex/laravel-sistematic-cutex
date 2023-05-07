@@ -77,7 +77,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ route("colores") }}" class="menu-link">
+                <a href="{{ route("reportes") }}" class="menu-link">
                     <span class="menu-icon"><i class="fa-solid fa-chart-line"></i></span>
                     <span class="menu-text"> Reportes </span>
                 </a>

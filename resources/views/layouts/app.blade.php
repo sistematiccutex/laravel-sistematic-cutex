@@ -40,6 +40,7 @@
         <script src="{{ url('js/vendor.min.js') }}"></script>
         <script src="{{ url('js/app.min.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @yield('js')
     </body>
 </html>
