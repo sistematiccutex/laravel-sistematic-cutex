@@ -96,14 +96,14 @@
 
         function setData(response) {
             if (window.myChart != null) {
-  // Si existe, destruirlo antes de crear uno nuevo
-  window.myChart.destroy();
-}
+                // Si existe, destruirlo antes de crear uno nuevo
+                window.myChart.destroy();
+            }
 
-if (window.myChartDou != null) {
-  // Si existe, destruirlo antes de crear uno nuevo
-  window.myChartDou.destroy();
-}
+            if (window.myChartDou != null) {
+                // Si existe, destruirlo antes de crear uno nuevo
+                window.myChartDou.destroy();
+            }
 
             const totalVentas = document.getElementById('totalVentas')
             const totalProductos = document.getElementById('totalProductos')
@@ -161,7 +161,7 @@ if (window.myChartDou != null) {
 
             var ctxDou = document.getElementById('totalProductosDou').getContext('2d');
 
-           window.myChartDou = new Chart(ctxDou, {
+            window.myChartDou = new Chart(ctxDou, {
                 type: 'doughnut',
                 data: {
                     labels: totalProductosDou.map((t) => t.name),

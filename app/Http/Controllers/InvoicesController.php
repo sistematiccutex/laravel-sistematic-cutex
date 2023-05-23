@@ -19,7 +19,10 @@ class InvoicesController extends Controller
     {
 
         //ORM Eloquent
-        $invoices = Invoice::all();
+        $invoices = Invoice::join('clients', 'invoices.client_id', '=', 'clients.id')
+            ->select('invoices.*', 'clients.names as client_names', 'clients.surnames as client_surnames')
+            ->orderBy('invoices.id', 'desc')
+            ->get();
         $users = User::all();
         $clients = Client::all();
         //select * from providers
@@ -32,8 +35,8 @@ class InvoicesController extends Controller
         $products = Product::query()
             ->leftJoin('details', 'details.product_id', '=', 'products.id')
             ->select('products.id', 'products.photo', 'products.name', 'products.reference', 'products.price', 'products.status', DB::raw('products.stock - SUM(IF(details.stock,details.stock,0)) as stockDetail'))
-            // ->whereRaw('products.stock - SUM(IF(details.stock,details.stock,0))', '>', 0)
             ->groupBy('products.id', 'products.photo', 'products.name', 'products.reference', 'products.price', 'products.status', 'details.product_id', 'products.stock')
+            ->havingRaw('stockDetail > ?', [0])
             ->get();
 
         $clients = Client::all();
@@ -50,26 +53,38 @@ class InvoicesController extends Controller
 
         foreach ($ammount as $price) {
             if ($price !== null) {
-                $detailData = json_decode($price);
-                $total += $detailData->ammount * $detailData->price;
+                $detailData = $price;
+                $total += $detailData['ammount'] * $detailData['price'];
             }
+        }
+
+        if ($request->input('client_id') === null) {
+            $clienSave =  Client::create([
+                'names' => $request->input('names'),
+                'surnames' => $request->input('surnames'),
+                'cellphone' => $request->input('cellphone'),
+                'email' => $request->input('email'),
+                'address' => $request->input('address'),
+                'document_number' => $request->input('document_number'),
+                'document_id' => $request->input('document_id'),
+            ]);
         }
 
         $invoiceSave = Invoice::create([
             'date_hour' => now(),
             'total' => $total,
             'user_id' => Auth::user()->id,
-            'client_id' => $request->input('client_id')
+            'client_id' => $request->input('client_id') === null ? $clienSave->id : $request->input('client_id')
         ]);
 
         foreach ($ammount as $ammountd) {
             if ($ammountd !== null) {
-                $detail = json_decode($ammountd);
+                $detail = $ammountd;
                 $dataInsert = [
-                    "price" => $detail->price,
-                    "stock" => $detail->ammount,
-                    "subtotal" => $detail->ammount * $detail->price,
-                    "product_id" => $detail->productId,
+                    "price" => $detail['price'],
+                    "stock" => $detail['ammount'],
+                    "subtotal" => $detail['ammount'] * $detail['price'],
+                    "product_id" => $detail['productId'],
                     "invoice_id" => $invoiceSave->id
                 ];
 

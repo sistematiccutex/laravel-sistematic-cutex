@@ -46,7 +46,7 @@
                                         <td> {{ $invoice->id }}</td>
                                         <td class="table-user">
                                             <a href="{{ route('facturas.detalles', $invoice->id) }}"
-                                                class="text-body fw-semibold">{{ $invoice->client_id }}</a>
+                                                class="text-body fw-semibold">{{ $invoice->client_names }} {{ $invoice->client_surnames }}</a>
                                         </td>
                                         <td>{{ $invoice->date_hour }}</td>
                                         <td>{{ $invoice->total }}</td>
@@ -73,7 +73,8 @@
                         <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
                         <script>
                             $(document).ready(function() {
-                                $('#invoice').DataTable({
+                                $('#facturas').DataTable({
+                                    order: [[0, 'desc']],
                                     "language": {
                                         "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                                     },
