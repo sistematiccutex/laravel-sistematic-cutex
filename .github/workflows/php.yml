@@ -37,5 +37,9 @@ jobs:
         run: npm run build
 
       - name: Deploy to InfinityFree
-        run: |
-          curl -T -u epiz_34159027:23jkfITvetBu ftp://ftpupload.net:21 --ftp-create-dirs -Q "-X POST"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftpupload.net
+          username: epiz_34159027
+          password: 23jkfITvetBu
+          port: 21 # todo replace with your web hosts ftps port
