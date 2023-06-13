@@ -8,45 +8,45 @@
             <div class="col-12">
                 <div class="card border-success border mb-3">
                     <div class="card-header"></div>
-                    <h1 class="ms-3">Detalles del proveedor</h1>
+                    <h1 class="ms-3">Detalles del cliente</h1>
                     <div class="card-body">
                         <table class="table table-centered table-nowrap table-hover mb-0">
         
                             <!--Inicio de Tabla Detalles-->
                             <tr>
-                                <th>Nombre</th>
-                                <td>{{ $user->names }}</td>
+                                <th>Nombres</th>
+                                <td>{{ $client->names }}</td>
                             </tr>
                             <tr>
-                                <th>Apellido</th>
-                                <td>{{ $user->surnames }}</td>
+                                <th>Apellidos</th>
+                                <td>{{ $client->surnames }}</td>
                             </tr>
                             <tr>
                                 <th>Número Documento</th>
-                                <td>{{ $user->document_number }}</td>
+                                <td>{{ $client->document_number }}</td>
                             </tr>
                             <tr>
                                 <th>Dirección</th>
-                                <td>{{ $user->address }}</td>
+                                <td>{{ $client->address }}</td>
                             </tr>
                             <tr>
-                                <th>Cellphone</th>
-                                <td>{{ $user->cellphone }}</td>
+                                <th>Celular</th>
+                                <td>{{ $client->cellphone }}</td>
                             </tr>
                             <tr>
                                 <th>Correo electrónico</th>
-                                <td>{{ $user->email}}</td>
+                                <td>{{ $client->email}}</td>
                             </tr>
                             <tr>
-                                <th>Estado:</th>
-                                <td>{{ $user-> status  }}</td>
+                                <th>Facturas</th>
+                                <td>{{  }}</td>
                             </tr>
                         </table>
                         <br>
                             <br>
                         <div class="button-list">
         
-                            <a  href="{{ route('usuarios') }}"  type="submit" class="btn btn-danger waves-effect waves-light">
+                            <a  href="{{ route('clientes') }}"  type="submit" class="btn btn-danger waves-effect waves-light">
                                 <span class="btn-label"><i class="mdi mdi-close-circle-outline"></i></span>Cancelar
                             </a>
                         </div>

@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\Document;
+
+class ClientsController extends Controller
+{
+    //Listar clientes
+    public function index()
+    {
+        //ORM Eloquent
+        $clients = Client::all();
+        $documents = Document::all();
+        //select * from providers
+        //me retorna la información en formato json
+        return view('clients.index', compact('clients', 'documents'));
+    }
+    public function store(Request $request)
+    {
+        // Guarda un mensaje de éxito en la sesión
+        session()->flash('success', 'Cliente creado correctamente');
+
+        Client::create($request->all());
+        return redirect()->route('clientes')->with('message', session('success'));
+    }
+    //Eliminar--> retorno vista clientes
+    public function destroy($id)
+    {
+        Client::find($id)->delete();
+        return redirect()->route('clientes');
+    }
+    //mostrar detalles
+    public function show($id)
+    {
+        $client = Client::find($id);
+        $documents = Document::all();
+        return view('clients.show', compact('client', 'documents'));
+    }
+    //editar
+    public function edit($id)
+    {
+        $user = Client::find($id);
+
+        return view('clients.edit', compact('client'));
+    }
+}

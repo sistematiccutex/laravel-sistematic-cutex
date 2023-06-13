@@ -71,6 +71,12 @@
                 </a>
             </li>
             <li class="menu-item">
+                <a href="{{ route('clientes') }}" class="menu-link">
+                    <span class="menu-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                    <span class="menu-text">Clientes </span>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="{{ route('facturas') }}" class="menu-link">
                     <span class="menu-icon"><i class="fa-solid fa-file-invoice"></i></span>
                     <span class="menu-text">Facturas </span>

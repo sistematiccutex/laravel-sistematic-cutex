@@ -91,6 +91,23 @@ Route::middleware([
     //Actualizar status Usuarios
     Route::put('usuarios-status/{id}', [UsersController::class, 'editStatus'])->name('usuarios.estado');
 
+    //Clientes
+    //listar Clientes
+    Route::get('clientes', [UsersController::class, 'index'])->name('clientes');
+    //Crear Clientes
+    Route::get('clientes/crear', [UsersController::class, 'create'])->name('clientes.crear');
+    //Guardar Clientes
+    Route::post('clientes', [UsersController::class, 'store'])->name('clientes.guardar');
+    //Eliminar Clientes
+    Route::delete('clientes/{id}', [UsersController::class, 'destroy'])->name('usuarios.eliminar');
+    //Detalles Clientes
+    Route::get('clientes/{id}', [UsersController::class, 'show'])->name('clientes.detalles');
+    //Editar Clientes
+    Route::get('clientes/{id}/editar', [UsersController::class, 'edit'])->name('clientes.editar');
+    //Actualizar Clientes
+    Route::put('clientes/{id}', [UsersController::class, 'update'])->name('clientes.actualizar');
+
+
     //Facturas
     //listar Facturas
     Route::get('facturas', [InvoicesController::class, 'index'])->name('facturas');

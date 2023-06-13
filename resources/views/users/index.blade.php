@@ -183,7 +183,7 @@
                         <input type="text" class="form-control" name="surnames" required>
                     </div>
                     <div class="mb-3">
-                        <label for="company" class="form-label">Numero Documento</label>
+                        <label for="company" class="form-label">Número Documento</label>
                         <input type="number" class="form-control" name="document_number" required>
                     </div>
                     <div class="mb-3">
@@ -195,7 +195,7 @@
                         <input type="number" class="form-control" name="cellphone" required>
                     </div>
                     <div class="mb-3">
-                        <label for="position" class="form-label">Email</label>
+                        <label for="position" class="form-label">Correo electrónico</label>
                         <input type="email" class="form-control" name="email" required>
                     </div>
                     <div>
