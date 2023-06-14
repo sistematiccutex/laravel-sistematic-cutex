@@ -42,7 +42,7 @@ class ClientsController extends Controller
     //editar
     public function edit($id)
     {
-        $user = Client::find($id);
+        $client = Client::find($id);
 
         return view('clients.edit', compact('client'));
     }

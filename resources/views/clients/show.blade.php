@@ -39,7 +39,7 @@
                             </tr>
                             <tr>
                                 <th>Facturas</th>
-                                <td>{{  }}</td>
+                                <td></td>
                             </tr>
                         </table>
                         <br>

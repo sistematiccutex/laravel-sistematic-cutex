@@ -22,10 +22,10 @@
                     @if (Auth::user()->rol_id!= 3)
                         <!--Botón Crear-->
                         <div class="text-sm-end">
-                            <button type="button" class="btn btn-danger waves-effect waves-light mt-3 mb-2"
-                                data-bs-toggle="modal" data-bs-target="#custom-modal"><i
+                            <a href="{{ route('facturas.crear')  }}"class="btn btn-danger waves-effect waves-light mt-3 mb-2"
+                               ><i
                                     class="mdi mdi-plus-circle me-1"></i> Crear Cliente
-                            </button>
+                            </a>
                         </div>
                     @endif
 
@@ -41,7 +41,7 @@
                                     <th></th>
                                     <th>Nombre</th>
                                     <th>Celular </th>
-                                    <th>email</th>
+                                    <th>Correo electrónico</th>
                                     <th>Facturas</th>
                                     @if (Auth::user()->rol_id!= 3)
                                     <th style="width: 82px;">Acciones</th>
@@ -60,17 +60,15 @@
                                         </td>
                                         <td>{{$client->cellphone}}</td>
                                         <td>{{ $client->email }}</td>
-                                        <td>{{ }}</td> // Asociación clientes a facturas
-                                        <td class="d-flex">
-                                            <form id="formDeleted{{ $client->id }}"
-                                                action="{{ route('clientes.eliminar', $client->id) }}" method="POST">
-                                                @method('DELETE')
-                                                @csrf   
-                                        </td>
+                                        <td >Facturas </td>
                                         @if (Auth::user()->rol_id != 3)
                                             <td>
-                                                </form>
-                                                <a class="me-2 btn btn-sm btn-info"
+                                                <form id="formDeleted{{ $client->id }}"
+                                                    action="{{ route('clientes.eliminar', $client->id) }}" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf 
+                                                    
+                                                    <a class="me-2 btn btn-sm btn-info"
                                                     href="{{ route('clientes.editar', $client->id) }}"
                                                     class="action-icon">
                                                     Editar</a>
@@ -78,6 +76,8 @@
                                                     onclick="deleted({{ $client->id }})">
                                                     Eliminar
                                                 </button>
+                                                </form>
+                                               
                                             </td>
                                         @endif
                                     </tr>
@@ -90,7 +90,7 @@
                         <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
                         <script>
                             $(document).ready(function() {
-                                $('#productos').DataTable({
+                                $('#clients').DataTable({
                                     "language": {
                                         "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                                     },
@@ -177,7 +177,7 @@
                             <input type="text" class="form-control" name="address" required>
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label">Tipo Docuemnto</label>
+                            <label for="name" class="form-label">Tipo de documento</label>
                             <select name="document_id" id="" class="form-select">
                                 <option value="">Seleccionar...</option>
                                 @foreach($documents as $document)
@@ -185,27 +185,12 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="mb-3">
                             <label for="company" class="form-label">Número Documento</label>
                             <input type="number" class="form-control" name="document_number" required>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="name" class="form-label"></label>
-                            <select name="document_id" id="" class="form-select">
-                                <option value="">Seleccionar...</option>
-                                @foreach($documents as $document)
-                                    <option value="{{ $document->id }}">{{ $document->acronym}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                         <button>
-                            <a href="{{ route('facturas.crear') }}"
-                                class="text-body fw-semibold">
-                            </a>
-                         Crear Factura</button>
-                        </div>
 
                     </div>
                     <div class="text-end">

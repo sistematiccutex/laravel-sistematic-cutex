@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\ClientsController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -93,19 +94,19 @@ Route::middleware([
 
     //Clientes
     //listar Clientes
-    Route::get('clientes', [UsersController::class, 'index'])->name('clientes');
+    Route::get('clientes', [ClientsController::class, 'index'])->name('clientes');
     //Crear Clientes
-    Route::get('clientes/crear', [UsersController::class, 'create'])->name('clientes.crear');
+    Route::get('clientes/crear', [ClientsController::class, 'create'])->name('clientes.crear');
     //Guardar Clientes
-    Route::post('clientes', [UsersController::class, 'store'])->name('clientes.guardar');
+    Route::post('clientes', [ClientsController::class, 'store'])->name('clientes.guardar');
     //Eliminar Clientes
-    Route::delete('clientes/{id}', [UsersController::class, 'destroy'])->name('usuarios.eliminar');
+    Route::delete('clientes/{id}', [ClientsController::class, 'destroy'])->name('clientes.eliminar');
     //Detalles Clientes
-    Route::get('clientes/{id}', [UsersController::class, 'show'])->name('clientes.detalles');
+    Route::get('clientes/{id}', [ClientsController::class, 'show'])->name('clientes.detalles');
     //Editar Clientes
-    Route::get('clientes/{id}/editar', [UsersController::class, 'edit'])->name('clientes.editar');
+    Route::get('clientes/{id}/editar', [ClientsController::class, 'edit'])->name('clientes.editar');
     //Actualizar Clientes
-    Route::put('clientes/{id}', [UsersController::class, 'update'])->name('clientes.actualizar');
+    Route::put('clientes/{id}', [ClientsController::class, 'update'])->name('clientes.actualizar');
 
 
     //Facturas
