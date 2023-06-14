@@ -25,6 +25,7 @@
                             <form action="{{route('clientes.actualizar', $client->id)}}" method="post">
                                 @method('PUT')
                                 @csrf
+                                //Tabla clientes 
                                 <table class="table table-centered table-nowrap table-hover mb-0">
                                     <thead>
                                         <tr>
