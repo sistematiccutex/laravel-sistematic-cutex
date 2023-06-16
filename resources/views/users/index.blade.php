@@ -31,16 +31,13 @@
                 <div class="table-responsive">
                     <div class="col-sm-12">
                         <table id="usuarios"class="table table-striped table-bordered mb-5" style="width:100%">
-
                             <!--Inicio de Tabla crear-->
                             <thead>
                                 <tr>
-
                                     <th></th>
                                     <th>Nombre </th>
                                     <th>Apellido</th>
-                                    <th>Numero Documento</th>
-                                    <th>Numero Celular</th>
+                                    <th>Rol</th>
                                     <th>Estado</th>
                                     @if (Auth::user()->rol_id==1)
                                     <th style="width: 82px;">Acciones</th>
@@ -56,8 +53,13 @@
                                                 class="text-body fw-semibold">{{ $user->names }}</a>
                                         </td>
                                         <td>{{ $user->surnames }}</td>
-                                        <td>{{ $user->document_number }}</td>
-                                        <td>{{ $user->cellphone }}</td>
+                                        <td>
+                                            @foreach($roles as $rol)
+                                                @if($user->rol_id == $rol->id)
+                                                    {{ $rol->name }}
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <form action="{{ route('usuarios.estado', $user->id) }}" method="POST">
                                                 @method('PUT')
@@ -101,13 +103,6 @@
                         <script>
                             $(document).ready(function() {
                                 $('#usuarios').DataTable({
-
-
-
-
-
-
-
                                     "language": {
                                         "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                                     },
