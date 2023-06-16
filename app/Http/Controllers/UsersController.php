@@ -45,16 +45,21 @@ class UsersController extends Controller
     //mostrar detalles
     public function show($id)
     {
+        $roles = Rol::all();
         $user = User::find($id);
         $documents = Document::all();
-        return view('users.show', compact('user', 'documents'));
+        $companies = Company::all();
+        return view('users.show', compact('user', 'documents', 'roles', 'companies'));
     }
     //editar
     public function edit($id)
     {
+        $companies = Company::all();
+        $roles = Rol::all();
         $user = User::find($id);
+        $documents = Document::all();
 
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'documents', 'roles', 'companies'));
     }
     //editar status
     public function editStatus($id)
