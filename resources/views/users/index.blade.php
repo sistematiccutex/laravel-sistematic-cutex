@@ -183,6 +183,15 @@
                         <input type="text" class="form-control" name="surnames" required>
                     </div>
                     <div class="mb-3">
+                        <label for="name" class="form-label">Tipo Docuemnto</label>
+                        <select name="document_id" id="" class="form-select">
+                            <option value="">Seleccionar...</option>
+                            @foreach($documents as $document)
+                                <option value="{{ $document->id }}">{{ $document->acronym}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="company" class="form-label">Número Documento</label>
                         <input type="number" class="form-control" name="document_number" required>
                     </div>
@@ -201,18 +210,14 @@
                     <div>
                     <div class="mb-3">
                         <label for="position" class="form-label">Genero</label>
-                        <input type="text" class="form-control" name="gender" required>
-                    </div>
-                    <br>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Tipo Docuemnto</label>
-                        <select name="document_id" id="" class="form-select">
-                            <option value="">Seleccionar...</option>
-                            @foreach($documents as $document)
-                                <option value="{{ $document->id }}">{{ $document->acronym}}</option>
-                            @endforeach
+                        <select name="gender" id="" class="form-select">
+                            <option value="gender">Seleccionar...</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
                         </select>
                     </div>
+                    <br>
+                  
                     <div class="mb-3">
                         <label for="name" class="form-label">Rol</label>
                         <select name="rol_id" id="" class="form-select">
