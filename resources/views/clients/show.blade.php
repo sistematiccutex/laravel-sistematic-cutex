@@ -37,10 +37,6 @@
                                 <th>Correo electrónico</th>
                                 <td>{{ $client->email}}</td>
                             </tr>
-                            <tr>
-                                <th>Facturas</th>
-                                <td></td>
-                            </tr>
                         </table>
                         <br>
                             <br>

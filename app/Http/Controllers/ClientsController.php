@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Invoice;
 use App\Models\Document;
 
 class ClientsController extends Controller
@@ -45,5 +46,16 @@ class ClientsController extends Controller
         $client = Client::find($id);
 
         return view('clients.edit', compact('client'));
+    }
+    //facturas
+    public function invoice($id)
+    {
+        $client = Client::find($id);
+        $invoices = Invoice::join('users', 'invoices.user_id', '=', 'users.id')
+            ->where('invoices.client_id', $id)
+            ->select('invoices.*', 'users.names as user_names', 'users.surnames as user_surnames')
+            ->get();
+
+        return view('clients.invoice', compact('invoices', 'client'));
     }
 }

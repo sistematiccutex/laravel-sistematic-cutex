@@ -60,7 +60,9 @@
                                         </td>
                                         <td>{{$client->cellphone}}</td>
                                         <td>{{ $client->email }}</td>
-                                        <td >Facturas </td>
+                                        <td >
+                                            <a href="{{route('clientes.facturas',$client->id)}}">Ver facturas</a>
+                                        </td>
                                         @if (Auth::user()->rol_id != 3)
                                             <td>
                                                 <form id="formDeleted{{ $client->id }}"

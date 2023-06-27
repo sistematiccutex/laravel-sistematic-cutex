@@ -105,6 +105,8 @@ Route::middleware([
     Route::get('clientes/{id}', [ClientsController::class, 'show'])->name('clientes.detalles');
     //Editar Clientes
     Route::get('clientes/{id}/editar', [ClientsController::class, 'edit'])->name('clientes.editar');
+    // Ver Facturas
+    Route::get('clientes/{id}/facturas', [ClientsController::class, 'invoice'])->name('clientes.facturas');
     //Actualizar Clientes
     Route::put('clientes/{id}', [ClientsController::class, 'update'])->name('clientes.actualizar');
 
