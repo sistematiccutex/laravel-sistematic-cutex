@@ -177,6 +177,7 @@
                         <label for="name" class="form-label">Apellidos</label>
                         <input type="text" class="form-control" name="surnames" required>
                     </div>
+                    
                     <div class="mb-3">
                         <label for="name" class="form-label">Tipo Docuemnto</label>
                         <select name="document_id" id="" class="form-select">

@@ -106,8 +106,18 @@ class InvoicesController extends Controller
     //mostrar detalles
     public function show($id)
     {
-        $invoice = Invoice::find($id);
-        return view('invoices.show', compact('invoice'));
+        $invoice = Invoice::join('users', 'invoices.user_id', '=', 'users.id')
+            ->join('clients', 'invoices.client_id', '=', 'clients.id')
+            ->where('invoices.id', $id)
+            ->select('invoices.*', 'users.names as user_names', 'users.surnames as user_surnames', 'clients.names as client_names', 'clients.surnames as client_surnames')
+            ->first();
+
+        $products = Detail::join('products', 'details.product_id', '=', 'products.id')
+            ->select('details.*', 'products.name as product_name')
+            ->where('details.invoice_id', $id)
+            ->get();
+
+        return  view('invoices.show', compact('invoice', 'products'));
     }
     //editar
     public function edit($id)
