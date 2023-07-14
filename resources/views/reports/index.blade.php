@@ -32,14 +32,13 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <div class="card">
                 <div class="card-body">
                     <canvas id="totalIngresos"></canvas>
                 </div>
             </div>
         </div>
-        <div class="col-4"></div>
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
@@ -47,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4"></div>
+        
     </div>
 
 @section('js')
@@ -122,7 +121,7 @@
             var ctx = document.getElementById('totalIngresos').getContext('2d');
 
             // Configuración de opciones del gráfico
-            var options = {
+            var options = { height:300,
                 responsive: true,
                 scales: {
                     yAxes: [{
@@ -175,6 +174,9 @@
                         ],
                         hoverOffset: 4
                     }]
+                },
+                options: {
+                    height:300
                 }
             });
         }
